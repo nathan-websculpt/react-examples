@@ -2,7 +2,13 @@ This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next
 
 ## Getting Started
 
-First, run the development server:
+First, Clone this repo & install dependencies
+```
+git clone git@github.com:nathan-websculpt/react-examples.git
+cd react-examples
+npm install
+```
+Then, run the development server:
 
 ```bash
 npm run dev
