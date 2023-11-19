@@ -40,28 +40,78 @@ export default function Rows(person: RowsProps) {
         {/* drillable nested table */}
         <td colSpan={9}>
           {/* TODO: three tabs with tables */}
-          <table
+          <div
             className={`px-10 w-fit  ${rowOpen ? "block" : "hidden"} mx-auto`}
           >
-            <thead>
-              <tr className="text-sm rounded-xl text-base-content">
-                <th className="bg-primary">ID</th>
-                <th className="bg-primary">Address</th>
-                <th className="bg-primary">Zip</th>
-                <th className="bg-primary">State</th>
-              </tr>
-            </thead>
-            <tbody>
-              {person.row.addresses?.map((addrData) => (
-                <tr key={addrData.id}>
-                  <td className="px-4 py-3">{addrData?.id}</td>
-                  <td className="px-4 py-3">{addrData?.address}</td>
-                  <td className="px-4 py-3">{addrData?.zip}</td>
-                  <td className="px-4 py-3">{addrData?.state}</td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
+            <div role="tablist" className="tabs tabs-lifted">
+              <input
+                type="radio"
+                name="my_tabs_2"
+                role="tab"
+                className="tab"
+                aria-label="Addresses"
+                // checked
+                // onChange={() => console.log('tab 1 selected')}
+              />
+              <div
+                role="tabpanel"
+                className="p-10 tab-content bg-base-100 border-base-300 rounded-box"
+              >
+                <table
+                  className={`px-10 w-fit  ${
+                    rowOpen ? "block" : "hidden"
+                  } mx-auto`}
+                >
+                  <thead>
+                    <tr className="text-sm rounded-xl text-base-content">
+                      <th className="bg-primary">ID</th>
+                      <th className="bg-primary">Address</th>
+                      <th className="bg-primary">Zip</th>
+                      <th className="bg-primary">State</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {person.row.addresses?.map((addrData) => (
+                      <tr key={addrData.id}>
+                        <td className="px-4 py-3">{addrData?.id}</td>
+                        <td className="px-4 py-3">{addrData?.address}</td>
+                        <td className="px-4 py-3">{addrData?.zip}</td>
+                        <td className="px-4 py-3">{addrData?.state}</td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
+
+              <input
+                type="radio"
+                name="my_tabs_2"
+                role="tab"
+                className="tab"
+                aria-label="Emails"
+              />
+              <div
+                role="tabpanel"
+                className="p-10 tab-content bg-base-100 border-base-300 rounded-box"
+              >
+                Tab content 2
+              </div>
+
+              <input
+                type="radio"
+                name="my_tabs_2"
+                role="tab"
+                className="tab"
+                aria-label="Phones"
+              />
+              <div
+                role="tabpanel"
+                className="p-10 tab-content bg-base-100 border-base-300 rounded-box"
+              >
+                Tab content 3
+              </div>
+            </div>
+          </div>
         </td>
       </tr>
     </>
