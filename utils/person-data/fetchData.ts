@@ -1,4 +1,4 @@
-import { getNamesList, getEmailsList, getPhonesList, getUserObj, userObj, getAddressObj, getAddressesList, getZipsList, getStatesList } from "./data";
+import { getNamesList, getEmailsList, getPhonesList, getUserObj, userObj, getAddressObj, getAddressesList, getZipsList, getStatesList, getEmailObj, getUserNamesList } from "./data";
 
 const fetchData = (peopleCount: number): userObj[] => {
   const getRandomItemFromArray = (arr: any[], notThisItem: any) => {
@@ -18,7 +18,18 @@ const fetchData = (peopleCount: number): userObj[] => {
       user.addresses.push(newAddress);
     }
     return user;
-  }
+  };
+
+  const handleEmails = (user:userObj, emailCount:number): userObj => {
+    for(let i = 0; i < emailCount; i++) {
+      let newEmail = getEmailObj();
+      newEmail.id = i;
+      newEmail.account = getRandomItemFromArray(getUserNamesList(), "");
+      newEmail.emailAddress = getRandomItemFromArray(getEmailsList(), "");
+      user.emails.push(newEmail);
+    }
+    return user;
+  };
 
   let rslt = [];
   let notThisName = "";
@@ -36,7 +47,10 @@ const fetchData = (peopleCount: number): userObj[] => {
     notThisEmail = userEmail;
     newUserObj.phone = userPhone;
     notThisPhone = userPhone;
+    
     newUserObj = handleAddresses(newUserObj, 3);
+    newUserObj = handleEmails(newUserObj, 3);
+    
     console.log(i, newUserObj);
     rslt.push(newUserObj);
   }

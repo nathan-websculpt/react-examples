@@ -57,6 +57,8 @@ export default function Rows(person: RowsProps) {
                 role="tabpanel"
                 className="p-10 tab-content bg-base-100 border-base-300 rounded-box"
               >
+
+                {/* TODO: new component */}
                 <table
                   className={`px-10 w-fit  ${
                     rowOpen ? "block" : "hidden"
@@ -81,6 +83,8 @@ export default function Rows(person: RowsProps) {
                     ))}
                   </tbody>
                 </table>
+
+
               </div>
 
               <input
@@ -94,7 +98,31 @@ export default function Rows(person: RowsProps) {
                 role="tabpanel"
                 className="p-10 tab-content bg-base-100 border-base-300 rounded-box"
               >
-                Tab content 2
+                
+                {/* TODO: new component */}
+                <table
+                  className={`px-10 w-fit  ${
+                    rowOpen ? "block" : "hidden"
+                  } mx-auto`}
+                >
+                  <thead>
+                    <tr className="text-sm rounded-xl text-base-content">
+                      <th className="bg-primary">ID</th>
+                      <th className="bg-primary">Account</th>
+                      <th className="bg-primary">Email</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {person.row.emails?.map((emailData) => (
+                      <tr key={emailData.id}>
+                        <td className="px-4 py-3">{emailData?.id}</td>
+                        <td className="px-4 py-3">{emailData?.account}</td>
+                        <td className="px-4 py-3">{emailData?.emailAddress}</td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+
               </div>
 
               <input
