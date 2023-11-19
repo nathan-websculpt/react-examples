@@ -136,7 +136,33 @@ export default function Rows(person: RowsProps) {
                 role="tabpanel"
                 className="p-10 tab-content bg-base-100 border-base-300 rounded-box"
               >
-                Tab content 3
+                
+                
+                {/* TODO: new component */}
+                <table
+                  className={`px-10 w-fit  ${
+                    rowOpen ? "block" : "hidden"
+                  } mx-auto`}
+                >
+                  <thead>
+                    <tr className="text-sm rounded-xl text-base-content">
+                      <th className="bg-primary">ID</th>
+                      <th className="bg-primary">Number</th>
+                      <th className="bg-primary">Monthly Bill</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {person.row.phones?.map((phoneData) => (
+                      <tr key={phoneData.id}>
+                        <td className="px-4 py-3">{phoneData?.id}</td>
+                        <td className="px-4 py-3">{phoneData?.phoneNumber}</td>
+                        <td className="px-4 py-3">${phoneData?.monthlyBill}</td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+
+
               </div>
             </div>
           </div>

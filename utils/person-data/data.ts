@@ -7,11 +7,14 @@ const zipsList:string[] = ["50295","74636","59354","92918","87272","23665","9960
 const statesList:string[] = ["Maine","Indiana","Texas","Louisiana","Indiana","Wyoming","Hawaii","Ohio","Michigan","Connecticut","Maine","Oregon","Michigan","Delaware","Minnesota","Texas","Maryland","Arkansas","Maryland","Indiana","Michigan","Tennessee","Vermont","Washington","Oklahoma","Nevada","Arkansas","Maine","Minnesota","Virginia","Alaska","Tennessee","Virginia","Indiana","Mississippi","California","Alabama","Kentucky","Montana","Michigan","Illinois","Kansas","Kentucky","Ohio","Alaska","Mississippi","Hawaii","Louisiana","Montana","Nevada","Alabama","Delaware","Kansas","Alabama","Alabama","Indiana","Louisiana","Alaska","Utah","Nevada","Utah","Massachusetts","Michigan","Vermont","Alaska","Louisiana","Virginia","Maine","Kansas","Oregon","Oregon","Alabama","Kansas","Alaska","Iowa","Massachusetts","Maryland","Tennessee","Florida","Tennessee","Maryland","Maine","Louisiana","Connecticut","Nevada","Massachusetts","Montana","Missouri","Kentucky","Indiana","Hawaii","Oklahoma","Wyoming","Maryland","Ohio","Arizona","Colorado","Michigan","Michigan","Maine"];
 
 const userNamesList:string[] = ["RCU25UTJ8JK","YOR19OTG4BD","VGU65BIO6EK","MMP85VTK5YK","GFT14FAB7LQ","DUG34UHD6KF","OET11FOM7TY","MYM45YCQ3FW","KPA71FYM9HM","TSF18EWU7MF","BXH85NBT6LS","ZDU71NJO4WR","EIC61GWZ6TC","IRQ83QSQ8GX","PJP57LFE4YI","WVD29IWU0ID","ONX32CFC6JA","MIP78MWQ5TR","TSM65YXW5OT","UFD28BOY4NC","KEK19WNA5CX","LCV25TEA9XT","YOK72SKR8YF","MCB25NMU6LC","DVJ67NOL6TP","ZQQ74OMY2OG","CIV53UEW3ND","HMU67LLG8UX","TXI76GBQ3WU","MVU15YBN3GS","FQQ38SBW8PC","NXF05RVS7TL","HJL15EFU3UF","ZRW77NNY3CR","QVY85FDC4NO","KYO69LHN0XB","YYL47NXK8IY","GZH89UKK6GG","NFH64FEX5JJ","XCI82TRN3WS","VIW19FHI0IP","HAJ12ADC9EN","LQX97MGB7QJ","NST24TCK6YS","WDV21VDK4KH","DHY77NXT1QK","DOU98CSK9TT","NPH18KUV6KA","TCY87DTW5MQ","SNN91CEH6KE","SYE28TKG1NN","ZXY72FXH5PN","IRY52JUC4RV","HIO87QVV3YM","LCV56WER8MQ","YKC18IEV4QN","VPB61IJH6ID","CMU58ZNR8KV","JJX68CRV3OH","MHK85RKQ6WP","FJR82LYO5KS","HUS52FOW7QT","YCP85JEL4QY","GVV85EKT2RD","YKP65JWZ9IB","HDX91MTB0WU","RSI73FVG3AJ","YXX21PWJ2OV","JFL58SHG3DS","YUZ36VWE0NS","QDR07GIV4UK","TLS12RPW6WD","CXH41TIU1ES","BAT61DRU1VT","MPI20UKN8YR","LQG61CWQ5QU","UVO84KVR3MV","IXS78TSO7QO","WTC84LRU7IR","XML33DRU1BG","QSV86JQU7IZ","JSU42GRK1QG","NVG17RVF9FM","HSY61TWP1LV","SPB81SHH7EY","BOQ47PMB7QE","CWP32VOK5JN","PWD32NMZ0PZ","GUX42DDA5CA","LIC71QMV9HE","GMU28LBN5FX","JYR45XOX5QX","JSD83CXH9IB","QED18MPF2LR","VUO56HMN3NP","XWD65CVJ1DK","RFO51TJV1CV","CRQ05OTA7KV","PWT15NGU7DV","OYM48VLZ9VV"];
+
+const pricesList:number[] = [83.95 ,78.94 ,52.60 ,50.85 ,109.88 ,50.32 ,41.40 ,123.10 ,51.87 ,104.69 ,75.27 ,65.93 ,126.28 ,128.55 ,141.50 ,117.24 ,142.03 ,69.69 ,102.58 ,40.38 ,62.10 ,78.01 ,52.47 ,73.48 ,47.02 ,76.23 ,99.60 ,105.13 ,135.90 ,40.78 ,83.30 ,85.75 ,97.08 ,139.80 ,143.05 ,55.24 ,45.11 ,134.43 ,74.82 ,52.95 ,67.11 ,39.94 ,109.67 ,50.27 ,55.64 ,31.54 ,102.65 ,143.39 ,97.82 ,84.22 ,130.33 ,131.95 ,136.79 ,96.71 ,62.48 ,86.19 ,113.96 ,35.12 ,71.47 ,76.79 ,49.35 ,128.16 ,58.28 ,47.28 ,63.03 ,32.68 ,47.29 ,113.53 ,117.67 ,83.58 ,31.46 ,141.22 ,59.43 ,114.83 ,31.05 ,96.68 ,51.11 ,92.88 ,54.64 ,56.43 ,101.96 ,110.12 ,79.45 ,82.13 ,88.37 ,87.21 ,43.40 ,83.60 ,103.80 ,46.19 ,80.21 ,80.49 ,104.33 ,106.56 ,51.12 ,81.76 ,94.21 ,91.81 ,56.10 ,73.58];
 //^^^lists of 100 random items, generated from: https://generatedata.com/
 
 export type addressObj = {  id:number, address:string, zip:string, state:string };
 export type emailObj = {  id:number, account:string, emailAddress:string };
-export type userObj = {  id:number, name:string, email:string, phone:string, addresses:addressObj[], emails:emailObj[] };
+export type phoneObj = {  id:number, phoneNumber:string, monthlyBill:number };
+export type userObj = {  id:number, name:string, email:string, phone:string, addresses:addressObj[], emails:emailObj[], phones:phoneObj[] };
 
 export const getNamesList = ():string[] => {return namesList;};
 export const getEmailsList = ():string[] => {return emailsList;};
@@ -23,8 +26,11 @@ export const getStatesList = ():string[] => {return statesList;};
 
 export const getUserNamesList = ():string[] => {return userNamesList;};
 
+export const getPricesList = ():number[] => {return pricesList;};
+
 export const getAddressObj = ():addressObj => {return {  id: 0, address: "", zip: "", state: "" };};
 export const getEmailObj = ():emailObj => {return {  id: 0, account: "", emailAddress: "" };};
-export const getUserObj = ():userObj => {return {  id: 0, name: "", email: "", phone: "", addresses: [], emails: [] };};
+export const getPhoneObj = ():phoneObj => {return {  id: 0, phoneNumber: "", monthlyBill: 0 };};
+export const getUserObj = ():userObj => {return {  id: 0, name: "", email: "", phone: "", addresses: [], emails: [], phones: [] };};
 
 
