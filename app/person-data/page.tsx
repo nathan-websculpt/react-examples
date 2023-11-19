@@ -30,7 +30,7 @@ export default function PersonDataDemo() {
               <table className="table w-full text-xl md:table-md table-sm">
                 <thead>
                   <tr className="text-sm rounded-xl text-base-content">
-                    <th className="bg-primary">...</th>
+                    <th className="bg-primary"></th>
                     <th className="bg-primary">ID</th>
                     <th className="bg-primary">Name</th>
                     <th className="bg-primary">Email</th>
@@ -42,7 +42,7 @@ export default function PersonDataDemo() {
                     <Rows row={person} key={person.id} />
                   ))}
                   <tr>
-                    <td colSpan={5} className="border-t"></td>
+                    <td colSpan={5}></td>
                   </tr>
                 </tbody>
               </table>

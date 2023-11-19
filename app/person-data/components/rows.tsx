@@ -37,54 +37,32 @@ export default function Rows(person: RowsProps) {
         <td className="w-1/12 md:py-4">{person.row.email}</td>
         <td className="w-1/12 md:py-4">{person.row.phone}</td>
 
-
-
         {/* drillable nested table */}
-        <tr>
-          <td colSpan={5} className="pl-10">
-            <h1 className={`text-xl ${rowOpen ? "block" : "hidden"}`}>
-              Addresses
-            </h1>
-          </td>
-        </tr>
-        <tr
-          className={`w-full overflow-hidden transition-[max-height] delay-1000 duration-1000 ease-in-out  ${
-            rowOpen ? "max-h-20" : "max-h-0"
-          }`}
-        >
-          <td colSpan={9}>
-            <table
-              className={`px-10 w-fit  ${rowOpen ? "block" : "hidden"} mx-auto`}
-            >
-              <thead>
-                <tr className="text-sm rounded-xl text-base-content">
-                  <th className="bg-primary">
-                    ID
-                  </th>
-                  <th className="bg-primary">
-                    Address
-                  </th>
-                  <th className="bg-primary">
-                    Zip
-                  </th>
-                  <th className="bg-primary">
-                    State
-                  </th>
+        <td colSpan={9}>
+          {/* TODO: three tabs with tables */}
+          <table
+            className={`px-10 w-fit  ${rowOpen ? "block" : "hidden"} mx-auto`}
+          >
+            <thead>
+              <tr className="text-sm rounded-xl text-base-content">
+                <th className="bg-primary">ID</th>
+                <th className="bg-primary">Address</th>
+                <th className="bg-primary">Zip</th>
+                <th className="bg-primary">State</th>
+              </tr>
+            </thead>
+            <tbody>
+              {person.row.addresses?.map((addrData) => (
+                <tr key={addrData.id}>
+                  <td className="px-4 py-3">{addrData?.id}</td>
+                  <td className="px-4 py-3">{addrData?.address}</td>
+                  <td className="px-4 py-3">{addrData?.zip}</td>
+                  <td className="px-4 py-3">{addrData?.state}</td>
                 </tr>
-              </thead>
-              <tbody>
-                {person.row.addresses?.map((addrData) => (
-                  <tr key={addrData.id}>
-                    <td className="px-4 py-3">{addrData?.id}</td>
-                    <td className="px-4 py-3">{addrData?.address}</td>
-                    <td className="px-4 py-3">{addrData?.zip}</td>
-                    <td className="px-4 py-3">{addrData?.state}</td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-          </td>
-        </tr>
+              ))}
+            </tbody>
+          </table>
+        </td>
       </tr>
     </>
   );
