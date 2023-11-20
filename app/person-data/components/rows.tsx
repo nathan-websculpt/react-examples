@@ -37,8 +37,10 @@ export default function Rows(person: RowsProps) {
         <td className="w-1/12 md:py-4">{person.row.email}</td>
         <td className="w-1/12 md:py-4">{person.row.phone}</td>
 
+        {/* a better way to do these nested rows may be to just add (hidden) <tr> under each row */}
+
         {/* drillable nested table */}
-        <td colSpan={9}>
+        <td colSpan={5}>
           {/* TODO: three tabs with tables */}
           <div
             className={`px-10 w-fit  ${rowOpen ? "block" : "hidden"} mx-auto`}

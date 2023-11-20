@@ -1,6 +1,6 @@
 "use client";
 import { useState } from "react";
-import { userObj } from "../../utils/person-data/data";
+import { getAddressObj, getEmailObj, getPhoneObj, getUserObj, userObj } from "../../utils/person-data/data";
 import fetchData from "../../utils/person-data/fetchData";
 import Rows from "./components/rows";
 
@@ -11,6 +11,23 @@ export default function PersonDataDemo() {
     setPersonData(fetchData(3));
   };
 
+  const testtest1 = () => {
+    console.log("test one");
+    let newUserObj = getUserObj();
+    let newEmailObj = getEmailObj();
+    let newPhoneObj = getPhoneObj();
+    let newAddressObj = getAddressObj();
+
+    console.log("user", newUserObj);
+    console.log("email", newEmailObj);
+    console.log("phone", newPhoneObj);
+    console.log("addr", newAddressObj);
+  };
+
+  const testtest2 = () => {
+    console.log("test two");
+  };
+
   return (
     <>
       <div className="min-h-screen px-24 pt-5 bg-neutral">
@@ -19,10 +36,19 @@ export default function PersonDataDemo() {
         </a>
         <h1>some text here</h1>
         <h1>some more text over there</h1>
+        <div className="flex w-24 gap-2">
+          <button className="btn btn-primary" onClick={() => generateData()}>
+            SPIN UP
+          </button>
 
-        <button className="btn btn-primary" onClick={() => generateData()}>
-          SPIN UP
-        </button>
+          <button className="btn btn-primary" onClick={() => testtest1()}>
+            TEST ONE
+          </button>
+
+          <button className="btn btn-primary" onClick={() => testtest2()}>
+            TEST Two
+          </button>
+        </div>
 
         <div className="min-h-screen px-24 pt-5 bg-neutral">
           <div className="flex justify-center w-11/12 mt-9 max-w-11/12 sm:mx-auto">

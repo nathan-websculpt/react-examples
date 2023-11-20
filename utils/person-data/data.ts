@@ -11,26 +11,79 @@ const userNamesList:string[] = ["RCU25UTJ8JK","YOR19OTG4BD","VGU65BIO6EK","MMP85
 const pricesList:number[] = [83.95 ,78.94 ,52.60 ,50.85 ,109.88 ,50.32 ,41.40 ,123.10 ,51.87 ,104.69 ,75.27 ,65.93 ,126.28 ,128.55 ,141.50 ,117.24 ,142.03 ,69.69 ,102.58 ,40.38 ,62.10 ,78.01 ,52.47 ,73.48 ,47.02 ,76.23 ,99.60 ,105.13 ,135.90 ,40.78 ,83.30 ,85.75 ,97.08 ,139.80 ,143.05 ,55.24 ,45.11 ,134.43 ,74.82 ,52.95 ,67.11 ,39.94 ,109.67 ,50.27 ,55.64 ,31.54 ,102.65 ,143.39 ,97.82 ,84.22 ,130.33 ,131.95 ,136.79 ,96.71 ,62.48 ,86.19 ,113.96 ,35.12 ,71.47 ,76.79 ,49.35 ,128.16 ,58.28 ,47.28 ,63.03 ,32.68 ,47.29 ,113.53 ,117.67 ,83.58 ,31.46 ,141.22 ,59.43 ,114.83 ,31.05 ,96.68 ,51.11 ,92.88 ,54.64 ,56.43 ,101.96 ,110.12 ,79.45 ,82.13 ,88.37 ,87.21 ,43.40 ,83.60 ,103.80 ,46.19 ,80.21 ,80.49 ,104.33 ,106.56 ,51.12 ,81.76 ,94.21 ,91.81 ,56.10 ,73.58];
 //^^^lists of 100 random items, generated from: https://generatedata.com/
 
-export type addressObj = {  id:number, address:string, zip:string, state:string };
-export type emailObj = {  id:number, account:string, emailAddress:string };
-export type phoneObj = {  id:number, phoneNumber:string, monthlyBill:number };
-export type userObj = {  id:number, name:string, email:string, phone:string, addresses:addressObj[], emails:emailObj[], phones:phoneObj[] };
+export type addressObj = {
+  id: number;
+  address: string;
+  zip: string;
+  state: string;
+};
+export type emailObj = { id: number; account: string; emailAddress: string };
+export type phoneObj = { id: number; phoneNumber: string; monthlyBill: number };
+export type userObj = {
+  id: number;
+  name: string;
+  email: string;
+  phone: string;
+  addresses: addressObj[];
+  emails: emailObj[];
+  phones: phoneObj[];
+};
 
-export const getNamesList = ():string[] => {return namesList;};
-export const getEmailsList = ():string[] => {return emailsList;};
-export const getPhonesList = ():string[] => {return phonesList;};
+export const getNamesList = (): string[] => { return namesList; };
+export const getEmailsList = (): string[] => { return emailsList; };
+export const getPhonesList = (): string[] => { return phonesList; };
 
-export const getAddressesList = ():string[] => {return addressesList;};
-export const getZipsList = ():string[] => {return zipsList;};
-export const getStatesList = ():string[] => {return statesList;};
+export const getAddressesList = (): string[] => { return addressesList; };
+export const getZipsList = (): string[] => { return zipsList; };
+export const getStatesList = (): string[] => { return statesList; };
 
-export const getUserNamesList = ():string[] => {return userNamesList;};
+export const getUserNamesList = (): string[] => { return userNamesList; };
 
-export const getPricesList = ():number[] => {return pricesList;};
+export const getPricesList = (): number[] => { return pricesList; };
 
-export const getAddressObj = ():addressObj => {return {  id: 0, address: "", zip: "", state: "" };};
-export const getEmailObj = ():emailObj => {return {  id: 0, account: "", emailAddress: "" };};
-export const getPhoneObj = ():phoneObj => {return {  id: 0, phoneNumber: "", monthlyBill: 0 };};
-export const getUserObj = ():userObj => {return {  id: 0, name: "", email: "", phone: "", addresses: [], emails: [], phones: [] };};
+// export const getAddressObj = ():addressObj => {return {  id: 0, address: "", zip: "", state: "" };};
+export const getAddressObj = (
+  _id: number = 0,
+  _addr: string = "123 Something St.",
+  _zip: string = "55555",
+  _state: string = "MI"
+): addressObj => {
+  return { id: _id, address: _addr, zip: _zip, state: _state };
+};
 
+export const getEmailObj = (
+    _id: number = 0,
+    _acct: string = "testUserName",
+    _emailAddr: string = "test@test.com"
+): emailObj => {
+  return { id: _id, account: _acct, emailAddress: _emailAddr };
+};
 
+export const getPhoneObj = (
+    _id: number = 0,
+    _phoneNum: string = "555-555-5555",
+    _monthly: number = 35.55
+): phoneObj => {
+  return { id: _id, phoneNumber: _phoneNum, monthlyBill: _monthly };
+};
+
+export const getUserObj = (
+    _id: number = 0,
+    _name: string = "John Smith",
+    _email: string = "test@test.com",
+    _phone: string = "555-555-5555",
+    _addr: addressObj[] = [],
+    _emails: emailObj[] = [],
+    _phones: phoneObj[] = [],
+): userObj => {
+  return {
+    id: _id,
+    name: _name,
+    email: _email,
+    phone: _phone,
+    addresses: _addr,
+    emails: _emails,
+    phones: _phones,
+  };
+};
+//^^^taking more of a Factory Function approach

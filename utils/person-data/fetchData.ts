@@ -1,67 +1,52 @@
-import { getNamesList, getEmailsList, getPhonesList, getUserObj, userObj, getAddressObj, getAddressesList, getZipsList, getStatesList, getEmailObj, getUserNamesList, getPhoneObj, getPricesList } from "./data";
+import { getNamesList, getEmailsList, getPhonesList, getUserObj, userObj, getAddressObj, getAddressesList, getZipsList, addressObj, getStatesList, getEmailObj, getUserNamesList, getPhoneObj, getPricesList, emailObj, phoneObj } from "./data";
 
 const fetchData = (peopleCount: number): userObj[] => {
-  const getRandomItemFromArray = (arr: any[], notThisItem: any) => {
-    let item = arr[Math.floor(Math.random() * arr.length)];
-    if (item === notThisItem)
-      return arr[Math.floor(Math.random() * arr.length)];
-    else return item;
+  const getRandomItemFromArray = (arr: any[]) => {
+    return arr[Math.floor(Math.random() * arr.length)];
   };
 
-  const handleAddresses = (user:userObj, addressCount:number): userObj => {
+  const handleAddresses = (addressCount:number): addressObj[] => {
+    let addresses:addressObj[] = [];
     for(let i = 0; i < addressCount; i++) {
-      let newAddress = getAddressObj();
-      newAddress.id = i;
-      newAddress.address = getRandomItemFromArray(getAddressesList(), "");
-      newAddress.zip = getRandomItemFromArray(getZipsList(), "");
-      newAddress.state = getRandomItemFromArray(getStatesList(), "");
-      user.addresses.push(newAddress);
+      const addr = getRandomItemFromArray(getAddressesList());
+      const zip = getRandomItemFromArray(getZipsList());
+      const state = getRandomItemFromArray(getStatesList());
+      addresses.push(getAddressObj(i, addr, zip, state));
     }
-    return user;
+    return addresses;
   };
 
-  const handleEmails = (user:userObj, emailCount:number): userObj => {
+  const handleEmails = (emailCount:number): emailObj[] => {
+    let emails:emailObj[] = [];
     for(let i = 0; i < emailCount; i++) {
-      let newEmail = getEmailObj();
-      newEmail.id = i;
-      newEmail.account = getRandomItemFromArray(getUserNamesList(), "");
-      newEmail.emailAddress = getRandomItemFromArray(getEmailsList(), "");
-      user.emails.push(newEmail);
+      const account = getRandomItemFromArray(getUserNamesList());
+      const emailAddress = getRandomItemFromArray(getEmailsList());
+      emails.push(getEmailObj(i, account, emailAddress));
     }
-    return user;
+    return emails;
   };
 
-  const handlePhones = (user:userObj, phoneCount:number): userObj => {
+  const handlePhones = (phoneCount:number): phoneObj[] => {
+    let phones:phoneObj[] = [];
     for(let i = 0; i < phoneCount; i++) {
-      let newPhone = getPhoneObj();
-      newPhone.id = i;
-      newPhone.phoneNumber = getRandomItemFromArray(getPhonesList(), "");
-      newPhone.monthlyBill = getRandomItemFromArray(getPricesList(), "");
-      user.phones.push(newPhone);
+      const phoneNumber = getRandomItemFromArray(getPhonesList());
+      const monthlyBill = getRandomItemFromArray(getPricesList());
+      phones.push(getPhoneObj(i, phoneNumber, monthlyBill));
     }
-    return user;
+    return phones;
   };
 
   let rslt = [];
-  let notThisName = "";
-  let notThisEmail = "";
-  let notThisPhone = "";
   for (let i = 0; i < peopleCount; i++) {
-    let newUserObj = getUserObj();
-    newUserObj.id = i;
-    let userName = getRandomItemFromArray(getNamesList(), notThisName);
-    let userEmail = getRandomItemFromArray(getEmailsList(), notThisEmail);
-    let userPhone = getRandomItemFromArray(getPhonesList(), notThisPhone);
-    newUserObj.name = userName;
-    notThisName = userName;
-    newUserObj.email = userEmail;
-    notThisEmail = userEmail;
-    newUserObj.phone = userPhone;
-    notThisPhone = userPhone;
+    const userName = getRandomItemFromArray(getNamesList());
+    const userEmail = getRandomItemFromArray(getEmailsList());
+    const userPhone = getRandomItemFromArray(getPhonesList());
     
-    newUserObj = handleAddresses(newUserObj, 3);
-    newUserObj = handleEmails(newUserObj, 3);
-    newUserObj = handlePhones(newUserObj, 4);
+    const addressArr = handleAddresses(3);
+    const emailArr = handleEmails(3);
+    const phoneArr = handlePhones(4);
+
+    let newUserObj = getUserObj(i, userName, userEmail, userPhone, addressArr, emailArr, phoneArr);
 
     console.log(i, newUserObj);
     rslt.push(newUserObj);
@@ -69,6 +54,3 @@ const fetchData = (peopleCount: number): userObj[] => {
   return rslt;
 };
 export default fetchData;
-
-//^^^TODO: this code will not "randomly" select the same item twice in a row
-// ..... but, it needs to store all selected items into their own arrays, prevent doubles that way
