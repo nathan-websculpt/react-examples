@@ -1,9 +1,9 @@
 "use client";
 import { useState } from "react";
-import { userObj } from "../../../utils/person-data/data";
+import { TUser } from "../../../utils/person-data/data";
 
 interface RowsProps {
-  row: userObj;
+  row: TUser;
 }
 export default function Rows(person: RowsProps) {
   const [rowOpen, setRowOpen] = useState(false);

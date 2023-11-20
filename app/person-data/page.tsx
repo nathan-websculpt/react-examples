@@ -1,11 +1,11 @@
 "use client";
 import { useState } from "react";
-import { getAddressObj, getEmailObj, getPhoneObj, getUserObj, userObj } from "../../utils/person-data/data";
+import { Address, Email, Phone, User, TUser } from "../../utils/person-data/data";
 import fetchData from "../../utils/person-data/fetchData";
 import Rows from "./components/rows";
 
 export default function PersonDataDemo() {
-  const [personData, setPersonData] = useState<userObj[]>([]);
+  const [personData, setPersonData] = useState<TUser[]>([]);
 
   const generateData = () => {
     setPersonData(fetchData(3));
@@ -13,10 +13,10 @@ export default function PersonDataDemo() {
 
   const testtest1 = () => {
     console.log("test one");
-    let newUserObj = getUserObj();
-    let newEmailObj = getEmailObj();
-    let newPhoneObj = getPhoneObj();
-    let newAddressObj = getAddressObj();
+    let newUserObj = User();
+    let newEmailObj = Email();
+    let newPhoneObj = Phone();
+    let newAddressObj = Address();
 
     console.log("user", newUserObj);
     console.log("email", newEmailObj);
