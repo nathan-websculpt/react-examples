@@ -1,6 +1,12 @@
 "use client";
 import { useState } from "react";
-import { Address, Email, Phone, User, TUser } from "../../utils/person-data/data";
+import {
+  Address,
+  Email,
+  Phone,
+  User,
+  TUser,
+} from "../../utils/person-data/data";
 import fetchData from "../../utils/person-data/fetchData";
 import Rows from "./components/rows";
 
