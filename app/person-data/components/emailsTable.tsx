@@ -7,9 +7,9 @@ interface RowsProps {
 export default function EmailsTable(emails: RowsProps) {
   return (
     <>
-      <table className="px-10 mx-auto w-fit">
+      <table className="table bg-neutral">
         <thead>
-          <tr className="text-sm rounded-xl text-base-content">
+          <tr className="text-sm rounded-xl text-primary-content">
             <th className="bg-primary">ID</th>
             <th className="bg-primary">Account</th>
             <th className="bg-primary">Email</th>

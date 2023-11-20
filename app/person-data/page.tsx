@@ -59,9 +59,9 @@ export default function PersonDataDemo() {
         <div className="min-h-screen px-24 pt-5 bg-neutral">
           <div className="flex justify-center w-11/12 mt-9 max-w-11/12 sm:mx-auto">
             <div className="w-full overflow-x-auto">
-              <table className="table w-full text-xl md:table-md table-sm">
+              <table className="table text-xl md:table-md table-sm">
                 <thead>
-                  <tr className="text-sm rounded-xl text-base-content">
+                  <tr className="text-sm rounded-xl text-primary-content">
                     <th className="bg-primary"></th>
                     <th className="bg-primary">ID</th>
                     <th className="bg-primary">Name</th>
@@ -82,4 +82,3 @@ export default function PersonDataDemo() {
     </>
   );
 }
-// TODO: drillable table needs to display a user's list of addresses

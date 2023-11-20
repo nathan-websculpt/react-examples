@@ -11,16 +11,15 @@ export default function ExpandedRow(person: RowsProps) {
   return (
     <>
       {/* 3 tabs, each holding their own table */}
-      <div className="px-10 w-fit">
+      <div className="w-11/12">
         <div role="tablist" className="tabs tabs-lifted">
           <input
             type="radio"
-            name="my_tabs_2"
+            name={`my_tabs_${ person.row.id }`}
             role="tab"
             className="tab"
             aria-label="Addresses"
-            // checked
-            // onChange={() => console.log('tab 1 selected')}
+            defaultChecked
           />
           <div
             role="tabpanel"
@@ -31,7 +30,7 @@ export default function ExpandedRow(person: RowsProps) {
 
           <input
             type="radio"
-            name="my_tabs_2"
+            name={`my_tabs_${ person.row.id }`}
             role="tab"
             className="tab"
             aria-label="Emails"
@@ -45,7 +44,7 @@ export default function ExpandedRow(person: RowsProps) {
 
           <input
             type="radio"
-            name="my_tabs_2"
+            name={`my_tabs_${ person.row.id }`}
             role="tab"
             className="tab"
             aria-label="Phones"
