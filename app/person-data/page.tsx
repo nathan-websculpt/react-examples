@@ -67,9 +67,6 @@ export default function PersonDataDemo() {
                   {personData?.map((person) => (
                     <Rows row={person} key={person.id} />
                   ))}
-                  <tr>
-                    <td colSpan={5}></td>
-                  </tr>
                 </tbody>
               </table>
             </div>

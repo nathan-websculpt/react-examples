@@ -37,8 +37,13 @@ export default function Rows(person: RowsProps) {
         <td className="w-1/12 md:py-4">{person.row.email}</td>
         <td className="w-1/12 md:py-4">{person.row.phone}</td>
 
-        {/* a better way to do these nested rows may be to just add (hidden) <tr> under each row */}
+      </tr>
 
+
+
+            {/* TODO: Not sure what the key will be here, yet */}
+      <tr className={`${rowOpen ? "block" : "hidden"}`} key={((person.row.id + 1) * 2.4).toString()}>
+            
         {/* drillable nested table */}
         <td colSpan={5}>
           {/* TODO: three tabs with tables */}
@@ -169,7 +174,9 @@ export default function Rows(person: RowsProps) {
             </div>
           </div>
         </td>
+
       </tr>
+
     </>
   );
 }
