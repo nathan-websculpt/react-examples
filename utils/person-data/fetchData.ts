@@ -46,7 +46,7 @@ const fetchData = (peopleCount: number): TUser[] => {
     const emailArr = handleEmails(3);
     const phoneArr = handlePhones(4);
 
-    let newUserObj = User(i, userName, userEmail, userPhone, addressArr, emailArr, phoneArr);
+    const newUserObj = User(i, userName, userEmail, userPhone, addressArr, emailArr, phoneArr);
 
     console.log(i, newUserObj);
     rslt.push(newUserObj);
